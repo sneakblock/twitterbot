@@ -3,7 +3,7 @@ A processing sketch that uses OpenWeatherMap API to obtain data about a given ci
 */
 
 /* SETUP PHASE
-Establishes variables that will be used later...
+Establishes variables that will be used later.
 */
 
 /* Pollen object arrays to represent the clouds and rain. "Pollen" just means the pixelated dots we see onscreen. */
