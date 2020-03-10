@@ -9,4 +9,4 @@ var T = new Twit({
   consumer_secret:      'lRYpMwpja5rxKyVQJW6N2VsMQruJ56lHwGITTbyOLAcCl0aIFh',
   access_token:         '1237512064576282624-n66jbXBR5VnSIi2CX8qtWorv3crKB5',
   access_token_secret:  'jOVmER2z48kEUJxYfmudoUP6LGQmgLoSpb07766ru69sg'
-})
+});
