@@ -10,3 +10,11 @@ var T = new Twit({
   access_token:         '1237512064576282624-n66jbXBR5VnSIi2CX8qtWorv3crKB5',
   access_token_secret:  'jOVmER2z48kEUJxYfmudoUP6LGQmgLoSpb07766ru69sg'
 });
+
+setInterval(tweetIt, 1000*60*60*12);
+
+function tweetIt() {
+    T.post('statuses/update', { status: 'Im awake...' }, function(err, data, response) {
+      console.log(data)
+    })
+}

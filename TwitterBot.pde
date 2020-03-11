@@ -6,6 +6,9 @@ A processing sketch that uses OpenWeatherMap API to obtain data about a given ci
 Establishes variables that will be used later.
 */
 
+boolean recording = true;
+int r = 0;
+
 /* Pollen object arrays to represent the clouds and rain. "Pollen" just means the pixelated dots we see onscreen. */
 Pollen[] pollen;
 Pollen[] rain;
@@ -131,6 +134,13 @@ void draw() {
     }
     updatePixels();
     textPlace();
+    r++;
+    if (r >= 901) {
+        recording = false;
+    }
+    if (recording) {
+        saveFrame("output/ww_#####.png");
+    }
 }
 
 /* Places text on the screen to match the weather parameters of the location. */
