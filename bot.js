@@ -14,8 +14,6 @@ var T = new Twit({
 var exec = require('child_process').exec;
 var fs = require('fs');
 
-
-
 tweetIt();
 setInterval(tweetIt, 1000*60*60);
 
