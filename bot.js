@@ -18,10 +18,10 @@ tweetIt();
 setInterval(tweetIt, 1000*60*60);
 
 function tweetIt() {
-    var cmd = 'processing-java --sketch=/Users/benjaminlock/github/twitterbot --run';
+    var cmd = 'wizard/twitterbot';
     exec(cmd, processing);
     function processing(){
-        var filename = 'output/ww.png';
+        var filename = 'wizard/wizard/ww.png';
         var b64content = fs.readFileSync(filename, { encoding: 'base64' })
         T.post('media/upload', { media_data: b64content }, uploaded);
         function uploaded(err, data, response) {
