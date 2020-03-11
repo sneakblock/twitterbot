@@ -6,7 +6,7 @@ A processing sketch that uses OpenWeatherMap API to obtain data about a given ci
 Establishes variables that will be used later.
 */
 
-boolean recording = true;
+/* Instance variables used to manage the recording of frames. The program writes 1 frame to a directory called output, the 400th frame of the video. */
 int r = 0;
 
 /* Pollen object arrays to represent the clouds and rain. "Pollen" just means the pixelated dots we see onscreen. */
@@ -23,7 +23,7 @@ JSONObject json2;
 /* *** IMPORTANT ***
 The weather API strings are unchanged, the only thing that needs to be changed based on user input is the String city. This changes depending on the target city. Change this to any city name to have the weather wizard represent that city in the visual. For cities with a space in their name, replace the space with "+"
 */
-String city = "Houston";
+String city = "Tokyo";
 String weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=48f1269a0d96fb6682e998b9da66fa95";
 String timeURL = "https://showcase.linx.twenty57.net:8081/UnixTime/tounixtimestamp?datetime=now";
 
@@ -135,11 +135,8 @@ void draw() {
     updatePixels();
     textPlace();
     r++;
-    if (r >= 901) {
-        recording = false;
-    }
-    if (recording) {
-        saveFrame("output/ww_#####.png");
+    if (r == 400) {
+        saveFrame("output/ww.png");
     }
 }
 

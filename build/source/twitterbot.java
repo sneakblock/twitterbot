@@ -1,16 +1,16 @@
-import processing.core.*;
-import processing.data.*;
-import processing.event.*;
-import processing.opengl.*;
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
 
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.io.File;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
 
 public class twitterbot extends PApplet {
 
@@ -21,6 +21,9 @@ A processing sketch that uses OpenWeatherMap API to obtain data about a given ci
 /* SETUP PHASE
 Establishes variables that will be used later.
 */
+
+/* Instance variables used to manage the recording of frames. The program writes 1 frame to a directory called output, the 400th frame of the video. */
+int r = 0;
 
 /* Pollen object arrays to represent the clouds and rain. "Pollen" just means the pixelated dots we see onscreen. */
 Pollen[] pollen;
@@ -36,7 +39,7 @@ JSONObject json2;
 /* *** IMPORTANT ***
 The weather API strings are unchanged, the only thing that needs to be changed based on user input is the String city. This changes depending on the target city. Change this to any city name to have the weather wizard represent that city in the visual. For cities with a space in their name, replace the space with "+"
 */
-String city = "Houston";
+String city = "Tokyo";
 String weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=48f1269a0d96fb6682e998b9da66fa95";
 String timeURL = "https://showcase.linx.twenty57.net:8081/UnixTime/tounixtimestamp?datetime=now";
 
@@ -114,7 +117,7 @@ public boolean isRaining() {
 
 /* The Processing setup method. This sets the stage for the sketch, drawing the dimensions with size, and placing the pollen particles */
 public void setup() {
-
+    
     //From black to a soft blue, depending on time of day at given location.
     background (0);
     noStroke();
@@ -147,6 +150,10 @@ public void draw() {
     }
     updatePixels();
     textPlace();
+    r++;
+    if (r == 400) {
+        saveFrame("output/ww.png");
+    }
 }
 
 /* Places text on the screen to match the weather parameters of the location. */
