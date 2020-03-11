@@ -11,10 +11,35 @@ var T = new Twit({
   access_token_secret:  'jOVmER2z48kEUJxYfmudoUP6LGQmgLoSpb07766ru69sg'
 });
 
-setInterval(tweetIt, 1000*60*60*12);
+var exec = require('child_process').exec;
+var fs = require('fs');
+
+
+
+tweetIt();
+setInterval(tweetIt, 1000*60*60*2);
 
 function tweetIt() {
-    T.post('statuses/update', { status: 'Im awake...' }, function(err, data, response) {
-      console.log(data)
-    })
+    var cmd = 'processing-java --sketch=/Users/benjaminlock/github/twitterbot --run';
+    exec(cmd, processing);
+    function processing(){
+        var filename = 'output/ww.png';
+        var b64content = fs.readFileSync(filename, { encoding: 'base64' })
+        T.post('media/upload', { media_data: b64content }, uploaded);
+        function uploaded(err, data, response) {
+            var id = data.media_id_string;
+            var tweet = {
+                media_ids: [id]
+            }
+            T.post('statuses/update', tweet, tweeted);
+        }
+        console.log('finished');
+        function tweeted(err, data, response) {
+            if (err) {
+                console.log('error');
+            } else {
+                console.log('success!');
+            }
+        }
+    }
 }

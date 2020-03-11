@@ -23,7 +23,7 @@ JSONObject json2;
 /* *** IMPORTANT ***
 The weather API strings are unchanged, the only thing that needs to be changed based on user input is the String city. This changes depending on the target city. Change this to any city name to have the weather wizard represent that city in the visual. For cities with a space in their name, replace the space with "+"
 */
-String city = "Tokyo";
+String city = "Tehran";
 String weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=48f1269a0d96fb6682e998b9da66fa95";
 String timeURL = "https://showcase.linx.twenty57.net:8081/UnixTime/tounixtimestamp?datetime=now";
 
@@ -137,6 +137,7 @@ void draw() {
     r++;
     if (r == 400) {
         saveFrame("output/ww.png");
+        exit();
     }
 }
 
