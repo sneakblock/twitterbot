@@ -17,7 +17,7 @@ var fs = require('fs');
 
 
 tweetIt();
-setInterval(tweetIt, 1000*60*60*2);
+setInterval(tweetIt, 1000*60);
 
 function tweetIt() {
     var cmd = 'processing-java --sketch=/Users/benjaminlock/github/twitterbot --run';

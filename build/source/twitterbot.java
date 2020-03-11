@@ -35,11 +35,13 @@ float alpha;
 /* JSON Objects can read and parse APIs, json reads the weather API and json2 reads the time API. */
 JSONObject json;
 JSONObject json2;
+JSONObject json3;
 
 /* *** IMPORTANT ***
 The weather API strings are unchanged, the only thing that needs to be changed based on user input is the String city. This changes depending on the target city. Change this to any city name to have the weather wizard represent that city in the visual. For cities with a space in their name, replace the space with "+"
 */
-String city = "Tehran";
+
+String city = "";
 String weatherURL = "http://api.openweathermap.org/data/2.5/weather?q=Atlanta&appid=48f1269a0d96fb6682e998b9da66fa95";
 String timeURL = "https://showcase.linx.twenty57.net:8081/UnixTime/tounixtimestamp?datetime=now";
 
@@ -117,6 +119,9 @@ public boolean isRaining() {
 
 /* The Processing setup method. This sets the stage for the sketch, drawing the dimensions with size, and placing the pollen particles */
 public void setup() {
+    String cityPicker = str((int) random(0,41));
+    json3 = loadJSONObject("cities.json");
+    city = json3.getString(cityPicker);
     
     //From black to a soft blue, depending on time of day at given location.
     background (0);
